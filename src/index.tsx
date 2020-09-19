@@ -5,11 +5,11 @@ import {Provider} from "react-redux";
 import store from "@/config/dva";
 
 export default class extends React.Component<any, any> {
-    render(){
-        return(
+    render() {
+        return (
             <Provider store={store}>
-                <Navigator/>
+                <Navigator />
             </Provider>
-        )
+        );
     }
 }

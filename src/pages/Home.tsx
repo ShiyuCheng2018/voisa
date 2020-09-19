@@ -4,15 +4,16 @@ import {RootStackNavigation} from "@/navigator/index";
 import {connect, ConnectedProps} from "react-redux";
 import {RootState} from "@/models/index";
 
-const mapStateToProps = ({home}: RootState) =>({
-    num: home.num
+const mapStateToProps = ({home, loading}: RootState) => ({
+    num: home.num,
+    loading: loading.effects["home/asyncAdd"],
 });
 
 const connector = connect(mapStateToProps);
 
 type MadeState = ConnectedProps<typeof connector>;
 
-interface Props extends MadeState{
+interface Props extends MadeState {
     navigation: RootStackNavigation;
 }
 
@@ -23,20 +24,36 @@ class Home extends React.Component<Props> {
     };
 
     render() {
-        const {num} = this.props
+        const {num, loading} = this.props;
 
         return (
             <View>
                 <Text>Home {num}</Text>
-                <Button title={"+"} onPress={()=>{
-                    const {dispatch} = this.props;
-                    dispatch({
-                        type: "home/add",
-                        payload:{
-                            num: 10
-                        }
-                    })
-                }}/>
+                {loading ? <Text>Loading</Text> : <Text> </Text>}
+                <Button
+                    title={"+"}
+                    onPress={() => {
+                        const {dispatch} = this.props;
+                        dispatch({
+                            type: "home/add",
+                            payload: {
+                                num: 10,
+                            },
+                        });
+                    }}
+                />
+                <Button
+                    title={"async +"}
+                    onPress={() => {
+                        const {dispatch} = this.props;
+                        dispatch({
+                            type: "home/asyncAdd",
+                            payload: {
+                                num: 2,
+                            },
+                        });
+                    }}
+                />
                 <Button title={"detail"} onPress={this.onPress} />
             </View>
         );
