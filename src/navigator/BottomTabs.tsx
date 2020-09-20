@@ -6,6 +6,10 @@ import Listen from "@/pages/Listen";
 import Found from "@/pages/Found";
 import Account from "@/pages/Account";
 import {RootStackNavigation, RootStackParamList} from "@/navigator/index";
+import IconHome from "@/assets/iconfont/IconHome";
+import IconAccount from "@/assets/iconfont/IconAccount";
+import IconPopular from "@/assets/iconfont/IconPopular";
+import IconListen from "@/assets/iconfont/IconListen";
 
 export type BottomTabsParamList = {
     Home: undefined;
@@ -51,10 +55,42 @@ class BottomTabs extends React.Component<Props> {
                 tabBarOptions={{
                     activeTintColor: "#f86442",
                 }}>
-                <Tabs.Screen name={"Home"} component={Home} />
-                <Tabs.Screen name={"Listen"} component={Listen} />
-                <Tabs.Screen name={"Found"} component={Found} />
-                <Tabs.Screen name={"Account"} component={Account} />
+                <Tabs.Screen
+                    name={"Home"}
+                    component={Home}
+                    options={{
+                        tabBarIcon: ({color, size}) => (
+                            <IconHome color={color} size={size} />
+                        ),
+                    }}
+                />
+                <Tabs.Screen
+                    name={"Listen"}
+                    component={Listen}
+                    options={{
+                        tabBarIcon: ({color, size}) => (
+                            <IconListen color={color} size={size} />
+                        ),
+                    }}
+                />
+                <Tabs.Screen
+                    name={"Found"}
+                    component={Found}
+                    options={{
+                        tabBarIcon: ({color, size}) => (
+                            <IconPopular color={color} size={size} />
+                        ),
+                    }}
+                />
+                <Tabs.Screen
+                    name={"Account"}
+                    component={Account}
+                    options={{
+                        tabBarIcon: ({color, size}) => (
+                            <IconAccount color={color} size={size} />
+                        ),
+                    }}
+                />
             </Tabs.Navigator>
         );
     }

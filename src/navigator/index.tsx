@@ -49,7 +49,7 @@ class Navigator extends React.Component<any, any> {
                             }),
                         },
                     }}>
-                    <Stack.Screen name={"BottomTabs"} component={BottomTabs} />
+                    <Stack.Screen name={"BottomTabs"} component={BottomTabs} options={{headerTitle: "Home"}}/>
                     <Stack.Screen
                         options={{headerTitle: "Detail"}}
                         name={"Detail"}
