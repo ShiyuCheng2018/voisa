@@ -1,7 +1,7 @@
 import React from "react";
 import {RouteProp, TabNavigationState} from "@react-navigation/native";
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
-import Home from "@/pages/Home";
+// import Home from "@/pages/Home";
 import Listen from "@/pages/Listen";
 import Found from "@/pages/Found";
 import Account from "@/pages/Account";
@@ -10,9 +10,10 @@ import IconHome from "@/assets/iconfont/IconHome";
 import IconAccount from "@/assets/iconfont/IconAccount";
 import IconPopular from "@/assets/iconfont/IconPopular";
 import IconListen from "@/assets/iconfont/IconListen";
+import HomeTabs from "./HomeTabs";
 
 export type BottomTabsParamList = {
-    Home: undefined;
+    HomeTabs: undefined;
     Listen: undefined;
     Found: undefined;
     Account: undefined;
@@ -32,10 +33,10 @@ const Tabs = createBottomTabNavigator<BottomTabsParamList>();
 function getHeaderTitle(route: Route) {
     const routeName = route.state
         ? route.state.routes[route.state.index].name
-        : route.params?.screen || "Home";
+        : route.params?.screen || "HomeTabs";
 
     switch (routeName) {
-        case "Home":
+        case "HomeTabs":
             return "Home";
         case "Found":
             return "Found";
@@ -56,8 +57,8 @@ class BottomTabs extends React.Component<Props> {
                     activeTintColor: "#f86442",
                 }}>
                 <Tabs.Screen
-                    name={"Home"}
-                    component={Home}
+                    name={"HomeTabs"}
+                    component={HomeTabs}
                     options={{
                         tabBarIcon: ({color, size}) => (
                             <IconHome color={color} size={size} />

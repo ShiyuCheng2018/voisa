@@ -7,7 +7,7 @@ import {
 } from "@react-navigation/stack";
 import BottomTabs from "./BottomTabs";
 import Detail from "@/pages/Detail";
-import {Platform, StyleSheet} from "react-native";
+import {Platform, StatusBar, StyleSheet} from "react-native";
 
 export type RootStackParamList = {
     BottomTabs: {
@@ -40,6 +40,7 @@ class Navigator extends React.Component<any, any> {
                             HeaderStyleInterpolators.forUIKit,
                         gestureEnabled: true,
                         gestureDirection: "horizontal",
+                        headerStatusBarHeight: StatusBar.currentHeight,
                         headerStyle: {
                             ...Platform.select({
                                 android: {
