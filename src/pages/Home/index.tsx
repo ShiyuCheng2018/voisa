@@ -3,6 +3,7 @@ import {Button, Text, View} from "react-native";
 import {RootStackNavigation} from "@/navigator/index";
 import {connect, ConnectedProps} from "react-redux";
 import {RootState} from "@/models/index";
+import Carousel from "@/pages/Home/Carousel";
 
 const mapStateToProps = ({home, loading}: RootState) => ({
     num: home.num,
@@ -17,7 +18,7 @@ interface Props extends MadeState {
     navigation: RootStackNavigation;
 }
 
-class Home extends React.Component<Props> {
+class Index extends React.Component<Props> {
     onPress = () => {
         const {navigation} = this.props;
         navigation.navigate("Detail", {id: 100});
@@ -55,9 +56,10 @@ class Home extends React.Component<Props> {
                     }}
                 />
                 <Button title={"detail"} onPress={this.onPress} />
+                <Carousel/>
             </View>
         );
     }
 }
 
-export default connector(Home);
+export default connector(Index);
